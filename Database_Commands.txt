@@ -51,4 +51,5 @@ create table bookingTable (booking_id varchar(30) primary key,email varchar(20),
 
 ALTER TABLE flightdetails RENAME COLUMN flightdetails flight_class varchar(10);
 
-ALTER TABLE flightdetails CHANGE class flight_class varchar(10);
+ALTER TABLE registerDetails CHANGE mobile mobile varchar(15);
+ALTER TABLE registerDetails CHANGE email_id email_id varchar(50);

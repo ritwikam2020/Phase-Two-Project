@@ -16,26 +16,15 @@
      url="jdbc:mysql://localhost:3306/flight_booking"  
      user="root"  password="root"/> 
      <sql:query dataSource="${db}" var="rs">  
-	SELECT * from userLogin;  
+	SELECT * from adminLogin;  
 </sql:query>
-<%
-
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        
-        if (email == null || email.equals("") || password == null || password.equals("")) {
-                response.sendRedirect("sessionhandling.jsp?error=1");
-        }
-        
-%>
-<c:set var="email" value= "${param.email}"/>
-<c:set var="pwd" value= "${param.password}"/>
 <c:forEach var="rows" items="${rs.rows}"> 
-<c:if test="${rows.email_id == email && rows.password == pwd}">
+<c:if test="${rows.email_id == param.email && rows.password == param.password}">
    <p>verified <c:out value="${rows.email_id}"/>
    <c:redirect url = "AdminPage.jsp"/>
    </p>  
 </c:if> 
 </c:forEach>
+
 </body>
 </html>

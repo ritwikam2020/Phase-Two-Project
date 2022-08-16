@@ -11,20 +11,29 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-Random rand = new Random();
-int n = rand.nextInt(1000000);
-%>
-<jsp:useBean id="bookingDetails" class="bookings.bookingDetails" scope="session"></jsp:useBean>
-<h4 style= "color: green;">Dear,<c:out value="${bookingDetails.name}"/><br> </h4>
-<h4 style= "color: blue;">Your Payment was successful, Thank you for choosing us </h4>
-<h4 style= "color: blue;">Your booking id is: <c:out value="<%=n%>"/> </h4>
-<h4 style= "color: blue;">Have a safe flight! </h4>
 <sql:setDataSource var="db" driver="com.mysql.jdbc.Driver"  
      url="jdbc:mysql://localhost:3306/flight_booking"  
      user="root"  password="root"/> 
-<sql:update dataSource="${db}" var="count">  
-INSERT INTO bookingTable VALUES ('<%=n%>','${bookingDetails.email}','${bookingDetails.flightNo}');
-</sql:update>
+     <sql:query dataSource="${db}" var="rs">  
+	SELECT * from bookingTable;  
+</sql:query>
+<table border="2" width="100%">  
+<tr>  
+<th>Booking ID</th>  
+<th>Email</th>  
+<th>Flight No</th>   
+</tr>
+	<c:forEach var="booking" items="${rs.rows}"> 
+	<c:if test="${booking.email == param.email}">
+	   <p>
+	   <tr>
+	   		<td><c:out value="${booking.booking_id}"/></td>  
+			<td><c:out value="${booking.email}"/></td>    
+			<td><c:out value="${booking.flight}"/></td>
+		</tr>
+	   </p>  
+	</c:if> 
+	</c:forEach>
+	<a href="AdminPage.jsp"><button>Back to Admin Page</button></a>
 </body>
 </html>

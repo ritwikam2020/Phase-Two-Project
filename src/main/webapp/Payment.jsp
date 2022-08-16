@@ -11,20 +11,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-Random rand = new Random();
-int n = rand.nextInt(1000000);
-%>
 <jsp:useBean id="bookingDetails" class="bookings.bookingDetails" scope="session"></jsp:useBean>
-<h4 style= "color: green;">Dear,<c:out value="${bookingDetails.name}"/><br> </h4>
-<h4 style= "color: blue;">Your Payment was successful, Thank you for choosing us </h4>
-<h4 style= "color: blue;">Your booking id is: <c:out value="<%=n%>"/> </h4>
-<h4 style= "color: blue;">Have a safe flight! </h4>
 <sql:setDataSource var="db" driver="com.mysql.jdbc.Driver"  
      url="jdbc:mysql://localhost:3306/flight_booking"  
      user="root"  password="root"/> 
 <sql:update dataSource="${db}" var="count">  
-INSERT INTO bookingTable VALUES ('<%=n%>','${bookingDetails.email}','${bookingDetails.flightNo}');
+INSERT INTO registerDetails VALUES ('${bookingDetails.name}','${bookingDetails.address}',${bookingDetails.age},'${bookingDetails.mobile}','${bookingDetails.email}','${bookingDetails.identity}','${bookingDetails.country}');
 </sql:update>
+<h1 style= "color: blue;">Click on the Pay button to continue Payment </h1>
+Total Amount- <c:out value="${param.price}"/><br>
+<a href="confirmation.jsp"><button>Pay</button></a>
 </body>
 </html>

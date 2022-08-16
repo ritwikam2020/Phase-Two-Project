@@ -43,7 +43,7 @@
 	   <tr>
 	   		<td><c:out value="${flights.airline_name}"/></td>  
 			<td><c:out value="${flights.price}"/></td>  
-			<td><a href="registerdetails.jsp" ><c:out value="${flights.flight_no}"/></a></td>
+			<td><a href="registerdetails.jsp?flightno=${flights.flight_no}" ><c:out value="${flights.flight_no}"/></a></td>
 			<td><c:out value="${flights.source_city}"/></td>  
 			<td><c:out value="${flights.dest_city}"/></td>  
 			<td><c:out value="${flights.dept_time}"/></td>
@@ -57,13 +57,11 @@
 	   </p>  
 	</c:if> 
 	</c:forEach>
+	<c:if test="${nop != null}">
+   <p><jsp:useBean id="bookingDetails" class="bookings.bookingDetails" scope="session"></jsp:useBean>
+        <jsp:setProperty property="people" name="bookingDetails" value="${nop}"/>
+   </p>  
+</c:if>
 </table>
-<%-- 
-you have entered
-<c:out value="${dot}"/>
-<c:out value="${sourcecity}"/>
-<c:out value="${destcity}"/>
-<c:out value="${nop}"/>
---%>
 </body>
 </html>
