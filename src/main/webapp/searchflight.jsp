@@ -6,14 +6,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Search Flight Page</title>
 </head>
-<body>
+<body background='https://www.travelandleisure.com/thmb/1MiwSCdmntdHMJtxXMdb56kUcTo=/650x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/flight-landing-INBNDCHECK1117-bbcbdbdd91f7480693283cd88393b3ff.jpg' style="background-repeat:no-repeat; background-size: 100% 100vh">
 <%
   if (request.getParameter("error") != null)
           out.println("<b>Your session has expired or is invalid.</b><br>");
 %>
-<h2 style= "color: blue;">Please enter the below details to search for desired flights </h2>
+<h2 style= "color: yellow;">Please enter the below details to search for desired flights </h2>
+<h4>
 <form action="flightpage.jsp">
-  Date of travel <input name="dot" id="dot"><br>
+  Date of travel <input type="date" placeholder="dd-mm-yyyy" name="dot" id="dot"><br>
   <label for="sourcecity">Source City:</label>
 <select id="sourcecity" name="sourcecity">
   <option value="New Delhi">New Delhi</option>
@@ -31,5 +32,6 @@
 No of people <input name="nop" id="nop"><br>
   <button>Search</button>  
 </form>
+</h4>
 </body>
 </html>

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Updating Password</title>
 </head>
 <body>
 <sql:setDataSource var="db" driver="com.mysql.jdbc.Driver"  
@@ -21,6 +21,6 @@ UPDATE adminLogin SET password = ? WHERE email_id = ?
 		   <sql:param value="${pass}" />
 		   <sql:param value="${eml}" />
 </sql:update>
-<c:redirect url = "AdminLogin.jsp"/>
+<c:redirect url = "AdminLogin.jsp?update=${1}"/>
 </body>
 </html>

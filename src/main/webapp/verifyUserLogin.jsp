@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>User Login Verification</title>
 </head>
 <body>
 <!-- sql:setDataSource tag -->
@@ -30,12 +30,19 @@
 %>
 <c:set var="email" value= "${param.email}"/>
 <c:set var="pwd" value= "${param.password}"/>
+<c:set var="flag" value= "${0}"/>
 <c:forEach var="rows" items="${rs.rows}"> 
 <c:if test="${rows.email_id == email && rows.password == pwd}">
    <p>verified <c:out value="${rows.email_id}"/>
-   <c:redirect url = "AdminPage.jsp"/>
+   <c:set var="flag" value= "${1}"/>
+   <c:redirect url = "searchflight.jsp"/>
    </p>  
 </c:if> 
 </c:forEach>
+<c:if test="${flag ==0}">
+<p>
+<c:redirect url = "Userlogin.jsp?login=${1}"/>
+</p>
+</c:if>
 </body>
 </html>

@@ -1,0 +1,55 @@
+------user login-------
+create table userLogin (email_id varchar(30) primary key, password varchar(30));
+insert into userLogin values ("ritwikam@gmail.com", "ritwikamukherjee");
+insert into userLogin values ("dassubho@gmail.com", "dassubhabrata");
+insert into userLogin values ("karun@gmail.com", "kumararun");
+insert into userLogin values ("msagarika@gmail.com", "msagarika");
+insert into userLogin values ("samir@gmail.com", "samir");
+
+---------admin login----------------
+create table adminLogin (email_id varchar(30) primary key, password varchar(30));
+insert into adminLogin values ("admin@gmail.com", "admin@booking");
+
+--------- flight details table-----------
+Flight details table  ---> all the flight specific details like ; 
+ - airline name
+ - price
+ - flight no (PRIMARY KEY)
+ - source city
+ - destination city
+ - departure time from source
+ - arrival time to destination
+ - total_seats
+ - booked_seats
+ - seat_availibility (  total_seats - booked_seats )
+ - date of travel
+ - class (Economy / Business)
+ 
+create table flightdetails (airline_name varchar(30),price integer,flight_no varchar(6) primary key, source_city varchar(20),dest_city varchar(20), dept_time varchar(6),arrival_time varchar(6),total_seats integer,booked_seats integer,seat_availibility integer,date_of_travel varchar(15),class varchar(10));
+insert into flightdetails values("Thai Airways",200000,"TA11","Tokyo","New Delhi","23:00","11:30",80,50,30,"2022-08-26","Economy");
+insert into flightdetails values("Air India",150000,"AI556","Tokyo","New Delhi","21:15","08:45",80,50,30,"2022-08-30","Economy");
+insert into flightdetails values("Air India",200000,"AI556","Tokyo","New Delhi","21:15","08:45",80,50,30,"2022-08-30","Business");
+insert into flightdetails values("Thai Airways",300000,"TA768","Tokyo","New Delhi","23:00","11:30",80,50,30,"2022-08-22","Business");
+insert into flightdetails values("Indigo",9000,"ID200","New Delhi","Bengaluru","06:00","08:35",50,40,10,"2022-08-24","Economy");
+insert into flightdetails values("Vistara",10000,"VS967","New Delhi","Bengaluru","06:15","09:00",50,35,15,"2022-08-22","Economy");
+insert into flightdetails values("Spice Jet",12000,"SJ209","New Delhi","Bengaluru","06:05","08:55",50,22,28,"2022-08-24","Economy");
+insert into flightdetails values("Air Asia",20000,"AA926","New Delhi","Bengaluru","08:10","10:40",50,25,25,"2022-08-22","Economy");
+insert into flightdetails values("Indigo",12000,"ID115","Bengaluru","Kolkata","06:30","08:50",50,22,28,"2022-08-29","Economy");
+insert into flightdetails values("Vistara",20000,"VS235","Bengaluru","Kolkata","18:10","20:35",50,25,25,"2022-08-29","Economy");
+insert into flightdetails values("Spice Jet",12000,"SJ789","Bengaluru","Kolkata","17:55","20:35",50,22,28,"2022-08-30","Economy");
+insert into flightdetails values("Air Asia",20000,"AA957","Bengaluru","Kolkata","11:55","14:20",50,25,25,"2022-08-30","Economy");
+insert into flightdetails values("Thai Airways",55000,"TA777","Tokyo","Bangkok","10:35","15:05",90,72,18,"2022-08-18","Economy");
+insert into flightdetails values("Air Asia",20000,"AA957","Tokyo","Bangkok","09:15","14:00",90,45,45,"2022-08-18","Economy");
+insert into flightdetails values("Indigo",12000,"ID185","Kolkata","New Delhi","10:10","12:20",50,46,4,"2022-08-15","Economy");
+insert into flightdetails values("Vistara",20000,"VS295","Kolkata","New Delhi","21:45","23:55",50,40,10,"2022-08-15","Economy");
+
+--------register---
+create table registerDetails (full_name varchar(30),address varchar(30),age integer,mobile integer,email_id varchar(20) primary key, id_proof varchar(30),country varchar(20));
+
+-------booking table-----------
+create table bookingTable (booking_id varchar(30) primary key,email varchar(20),flight varchar(20),foreign key (email) references registerDetails (email_id) on delete cascade,foreign key (flight) references flightdetails (flight_no) on delete cascade);
+
+ALTER TABLE flightdetails RENAME COLUMN flightdetails flight_class varchar(10);
+
+ALTER TABLE registerDetails CHANGE mobile mobile varchar(15);
+ALTER TABLE registerDetails CHANGE email_id email_id varchar(50);

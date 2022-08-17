@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Setting Form Properties</title>
 </head>
 <body>  
 <% String hidden = request.getParameter("identity") +"-"+request.getParameter("details");

@@ -8,18 +8,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Confirmation</title>
 </head>
-<body>
+<body background='https://images.unsplash.com/photo-1606768666853-403c90a981ad?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80' style="background-repeat:no-repeat; background-size: 100% 100vh"> 
 <%
 Random rand = new Random();
 int n = rand.nextInt(1000000);
 %>
 <jsp:useBean id="bookingDetails" class="bookings.bookingDetails" scope="session"></jsp:useBean>
-<h4 style= "color: green;">Dear,<c:out value="${bookingDetails.name}"/><br> </h4>
-<h4 style= "color: blue;">Your Payment was successful, Thank you for choosing us </h4>
-<h4 style= "color: blue;">Your booking id is: <c:out value="<%=n%>"/> </h4>
-<h4 style= "color: blue;">Have a safe flight! </h4>
+<h2 style= "color: white;">Dear,<c:out value="${bookingDetails.name}"/><br> </h2>
+<h2 style= "color: white;">Your Payment was successful, Your booking id is: <span style="color:red;"><c:out value="<%=n%>"/></span></h2>
+<h2 style= "color: white;">Thank you for choosing us! </h2>
+<h2 style= "color: white;">Have a safe flight! </h2>
 <sql:setDataSource var="db" driver="com.mysql.jdbc.Driver"  
      url="jdbc:mysql://localhost:3306/flight_booking"  
      user="root"  password="root"/> 

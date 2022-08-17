@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Admin Login Verification</title>
 </head>
 <body>
 <!-- sql:setDataSource tag -->
@@ -18,13 +18,23 @@
      <sql:query dataSource="${db}" var="rs">  
 	SELECT * from adminLogin;  
 </sql:query>
+<c:set var="flag" value= "${0}"/>
 <c:forEach var="rows" items="${rs.rows}"> 
 <c:if test="${rows.email_id == param.email && rows.password == param.password}">
    <p>verified <c:out value="${rows.email_id}"/>
+   <c:set var="flag" value= "${1}"/>
    <c:redirect url = "AdminPage.jsp"/>
    </p>  
 </c:if> 
 </c:forEach>
+flag value
+<c:out value="${flag}"/>
+<c:if test="${flag ==0}">
+<p>
+not found
+<c:redirect url = "AdminLogin.jsp?login=${1}"/>
+</p>
+</c:if>
 
 </body>
 </html>

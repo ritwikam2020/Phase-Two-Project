@@ -8,9 +8,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Payment</title>
 </head>
-<body>
+<body background='https://eli-deal.com/wp-content/uploads/2021/12/payment-gateway.png' style="background-repeat:no-repeat; background-size: 100% 100vh"> 
 <jsp:useBean id="bookingDetails" class="bookings.bookingDetails" scope="session"></jsp:useBean>
 <sql:setDataSource var="db" driver="com.mysql.jdbc.Driver"  
      url="jdbc:mysql://localhost:3306/flight_booking"  
@@ -18,8 +18,8 @@
 <sql:update dataSource="${db}" var="count">  
 INSERT INTO registerDetails VALUES ('${bookingDetails.name}','${bookingDetails.address}',${bookingDetails.age},'${bookingDetails.mobile}','${bookingDetails.email}','${bookingDetails.identity}','${bookingDetails.country}');
 </sql:update>
+
 <h1 style= "color: blue;">Click on the Pay button to continue Payment </h1>
-Total Amount- <c:out value="${param.price}"/><br>
-<a href="confirmation.jsp"><button>Pay</button></a>
+<a href="confirmation.jsp"><button style="height:50px; width:150px;"><img src="https://img.favpng.com/9/12/4/digital-marketing-pay-per-click-advertising-search-engine-optimization-png-favpng-KPpMkacKpNWJtmZ76qipJGC7u.jpg" height ="30" width="50" />Pay <c:out value="${param.price}"/></button></a>
 </body>
 </html>

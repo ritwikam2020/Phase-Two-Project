@@ -8,9 +8,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Flight Details Page</title>
 </head>
-<body>
+<body background='https://www.travelandleisure.com/thmb/1MiwSCdmntdHMJtxXMdb56kUcTo=/650x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/flight-landing-INBNDCHECK1117-bbcbdbdd91f7480693283cd88393b3ff.jpg' style="background-repeat:no-repeat; background-size: 100% 100vh">
+<h2 style= "color: yellow;">Check on the Flight No of your choice </h2>
 <!-- sql:setDataSource tag -->
 <sql:setDataSource var="db" driver="com.mysql.jdbc.Driver"  
      url="jdbc:mysql://localhost:3306/flight_booking"  
@@ -43,7 +44,7 @@
 	   <tr>
 	   		<td><c:out value="${flights.airline_name}"/></td>  
 			<td><c:out value="${flights.price}"/></td>  
-			<td><a href="registerdetails.jsp?flightno=${flights.flight_no}" ><c:out value="${flights.flight_no}"/></a></td>
+			<td><a href="registerdetails.jsp?flightno=${flights.flight_no}"style="color: yellow" ><c:out value="${flights.flight_no}"/></a></td>
 			<td><c:out value="${flights.source_city}"/></td>  
 			<td><c:out value="${flights.dest_city}"/></td>  
 			<td><c:out value="${flights.dept_time}"/></td>

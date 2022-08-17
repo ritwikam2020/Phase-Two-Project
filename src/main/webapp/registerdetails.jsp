@@ -8,15 +8,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>User Registration</title>
 </head>
-<body>
+<body background='https://www.travelandleisure.com/thmb/1MiwSCdmntdHMJtxXMdb56kUcTo=/650x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/flight-landing-INBNDCHECK1117-bbcbdbdd91f7480693283cd88393b3ff.jpg' style="background-repeat:no-repeat; background-size: 100% 100vh">
 <c:if test="${param.flightno != null}">
    <p><jsp:useBean id="bookingDetails" class="bookings.bookingDetails" scope="application"></jsp:useBean>
         <jsp:setProperty property="flightNo" name="bookingDetails" value="${param.flightno}"/>
    </p>  
 </c:if> 
-<h2 style= "color: blue;">Please enter your personal details </h2>
+<h2 style= "color: yellow;">Please enter your personal details </h2>
+<h4>
 <form action="SettingFormProperties.jsp">
   Full name <input name="name" id="name"><br>
   Address <input name="address" id="address"><br>
@@ -33,5 +34,6 @@
 Country <input name="country" id="country"><br>
   <button>Search</button>  
 </form>
+</h4>
 </body>
 </html>
